@@ -1,0 +1,10 @@
+# TBS
+00 18 * * 1-5 /root/docker_rec_radiko/radiko_docker_run.sh TBS 181 /recorder アフター6ジャンクション
+00 22 * * 1-5 /root/docker_rec_radiko/radiko_docker_run.sh TBS 121 /recorder Session22
+00 1 * * 3 /root/docker_rec_radiko/radiko_docker_run.sh LFR 121 /recorder 星野ANN
+00 0 * * 2 /root/docker_rec_radiko/radiko_docker_run.sh TBS 63 /recorder Tokyopod
+00 13 * * 7 /root/docker_rec_radiko/radiko_docker_run.sh TBS 243 /recorder 日曜サンデー
+00 1 * * 3 /root/docker_rec_radiko/radiko_docker_run.sh TBS 120 /recorder 爆笑問題COWVOY
+00 21 * * 4 /root/docker_rec_radiko/radiko_docker_run.sh TBS 30 /recorder MYGAME
+00 1 * * 6 /root/docker_rec_radiko/radiko_docker_run.sh FMJ 30 /recorder SOFA
+00 6 * * 6 /root/docker_rec_radiko/radiko_docker_run.sh TBS 60 /recorder 木梨の会
