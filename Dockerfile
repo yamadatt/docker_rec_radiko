@@ -1,13 +1,8 @@
-FROM alpine:3.11.3
+FROM alpine:3.11.3 as swftools
 RUN apk add \
     --no-cache \
     --repository http://dl-3.alpinelinux.org/alpine/edge/testing \
     libtool automake autoconf nasm vips-dev fftw-dev gcc g++ make libc6-compat \
-    rtmpdump \
-    libxml2-utils \
-    ffmpeg \
-    wget
-RUN apk update \
     && wget http://swftools.org/swftools-0.9.2.tar.gz \
     && tar -xvf swftools-0.9.2.tar.gz  \
     && cd swftools-0.9.2 \
@@ -18,6 +13,21 @@ RUN apk update \
     && make install \
     && rm -rf /var/cache/apk/* \
     && rm -rf /swftools-0.9.2
+
+FROM alpine:3.11.3
+RUN apk add \
+    --no-cache \
+    --repository http://dl-3.alpinelinux.org/alpine/edge/testing \
+    rtmpdump \
+    libxml2-utils \
+    ffmpeg \
+    bash \
+    perl \
+    curl \
+    wget
+
+COPY --from=swftools /usr/local/bin/swfextract /usr/local/bin/
+
 COPY ./rec_radiko.sh /usr/local/bin/
 ENV TZ Asia/Tokyo
 WORKDIR /usr/volume
